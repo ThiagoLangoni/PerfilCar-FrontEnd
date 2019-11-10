@@ -1,0 +1,36 @@
+<h2>Detalhes do cliente</h2> 
+
+<hr/>
+<div *ngIf="perfil">
+  <div>
+    <label><b>Apelido: </b></label> {{perfil.apelido}}
+  </div>
+  <div>
+    <label><b>Marca: </b></label> {{perfil.marca}}
+  </div>
+  <div>
+    <label><b>Modelo: </b></label> {{perfil.modelo}}
+  </div>
+  <div>
+    <label><b>Quilometragem Atual: </b></label> {{perfil.quilometragemAtual}}
+  </div>
+  <div>
+    <label><b>Ano Fabricacao: </b></label> {{perfil.anoFabricacao}}
+  </div>
+  <div>
+    <label><b>Ano Modelo: </b></label> {{perfil.anoModelo}}
+  </div>
+  <div>
+    <label><b>Nome Proprietario: </b></label> {{perfil.nomeProprietario}}
+  </div>
+  <div>
+    <label><b>Informações Adicionais: </b></label> {{perfil.informacoesAdicionais}}
+  </div>
+  <div>
+    <label><b>Email Proprietario: </b></label> {{perfil.emailProprietario}}
+  </div>  
+</div>
+
+<br>
+<br>
+<button (click)="list()" class="btn btn-primary">Retornar a lista de clientes</button><br>

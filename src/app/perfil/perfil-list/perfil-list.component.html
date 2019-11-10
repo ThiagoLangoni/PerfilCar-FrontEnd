@@ -1,0 +1,31 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+      <h2>Lista de Perfis</h2>
+    </div>
+    <div class="panel-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Marca</th>
+            <th>Modelo</th>
+            <th>Ano Fabricacao</th>
+            <th>Proprietario</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let perfil of perfis | async">
+            <td class="truncate">{{perfil.marca}}</td>
+            <td class="truncate">{{perfil.modelo}}</td>
+            <td class="truncate">{{perfil.anoFabricacao}}</td>
+            <td class="truncate">{{perfil.nomeProprietario}}</td>
+            <td>
+                <button (click)="perfilDetails(perfil.id)" class="btn btn-info" style="margin-left: 2px">Detalhes</button>
+                <button (click)="perfilUpdate(perfil.id)" class="btn btn-info" style="margin-left: 2px">Editar</button>
+                <button (click)="deletePerfil(perfil.id)" class="btn btn-danger" style="margin-left: 2px">Excluir</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
