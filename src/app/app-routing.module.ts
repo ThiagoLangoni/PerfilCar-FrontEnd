@@ -7,7 +7,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { PerfilListComponent } from './perfil/perfil-list/perfil-list.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: '', redirectTo: 'listaPerfil', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'listaPerfil', component: PerfilListComponent },
   { path: 'criaPerfil', component: CreatePerfilComponent },

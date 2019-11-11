@@ -33,6 +33,6 @@ export class CreatePerfilComponent implements OnInit {
   }
 
   gotoList() {
-    this.router.navigate(['/clientes']);
+    this.router.navigate(['/listaPerfil']);
   }
 }

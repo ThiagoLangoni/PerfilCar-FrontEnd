@@ -1,5 +1,7 @@
+import { LoginService } from '../service/login.service';
+import { Usuario } from '../model/usuario';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -9,47 +11,30 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 export class LoginComponent implements OnInit {
 
-  loginForm: FormGroup;
-  loading = false;
+  usuario: Usuario = new Usuario();
   submitted = false;
-  returnUrl: string;
 
-  constructor(private formBuilder: FormBuilder,
-    private route: ActivatedRoute,
-    private router: Router,
-    private authenticationService: AuthenticationService,
-    private alertService: AlertService) { }
+  constructor(private router: Router,
+              private loginService: LoginService) { }
 
   ngOnInit() {
-    this.loginForm = this.formBuilder.group({
-      username: ['', Validators.required],
-      password: ['', Validators.required]
-    });
 
+  }
+
+  login() {
+    this.loginService.getLogin(this.usuario.nome, this.usuario.senha)
+      .subscribe(data => this.gotoList(data), error => console.log(error));
+    this.usuario = new Usuario();
   }
 
   onSubmit() {
     this.submitted = true;
+    this.login();
+  }
 
-    // reset alerts on submit
-    this.alertService.clear();
-
-    // stop here if form is invalid
-    if (this.loginForm.invalid) {
-        return;
-    }
-
-    this.loading = true;
-    this.authenticationService.login(this.f.username.value, this.f.password.value)
-        .pipe(first())
-        .subscribe(
-            data => {
-                this.router.navigate([this.returnUrl]);
-            },
-            error => {
-                this.alertService.error(error);
-                this.loading = false;
-            });
-}
+  gotoList(data : Object) {
+    console.log(data);
+    this.router.navigate(['/listaPerfil']);
+  }
 
 }

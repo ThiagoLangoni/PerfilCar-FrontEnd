@@ -8,9 +8,13 @@ import { Observable } from 'rxjs';
 
 export class LoginService {
 
-  private baseUrl = 'http://localhost:8080/usuario';
+  private baseUrl = 'http://localhost:8081/usuario';
 
   constructor(private http: HttpClient) { }
+
+  getLogin(nome: string, senha: string): Observable<any> {
+    return this.http.get(`${this.baseUrl}/usuario/${nome}/${senha}`);
+  }
 
   getUsuario(id: number): Observable<any> {
     return this.http.get(`${this.baseUrl}/usuario/${id}`);
